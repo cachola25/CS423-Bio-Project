@@ -1,0 +1,33 @@
+link,filename,priority
+GSM4983128,T cells - Oral Mucosa 10x OM121,	            2
+GSM4983129,T cells - Oral Mucosa 10x OM122,	            2
+GSM4983130,T cells - Oral Mucosa 10x OM124,	            2
+GSM4983131,T cells - Oral Mucosa 10x OM125,	            2
+GSM4983132,T cells - Blood (Oral) 10x OM121,	        2
+GSM4983133,T cells - Blood (Oral) 10x OM122,	        2
+GSM4983134,T cells - Blood (Oral) 10x OM124,	        2
+GSM4983135,T cells - Blood (Oral) 10x OM125,	        2
+GSM4983136,Myeloid Cells - Oral Mucosa 10x OM121,	    4
+GSM4983137,Myeloid Cells - Oral Mucosa 10x OM 122,	    4
+GSM4983138,Myeloid Cells - Oral Mucosa 10x OM124,	    4
+GSM4983139,Myeloid Cells - Oral Mucosa 10x OM125,	    4
+GSM4983140,Myeloid Cells - Blood (Oral) 10x OM121,	    4
+GSM4983141,Myeloid Cells - Blood (Oral) 10x OM122,	    4
+GSM4983142,Myeloid Cells - Blood (Oral) 10x OM124,	    4
+GSM4983143,Myeloid Cells - Blood (Oral) 10x OM125,	    4
+GSM4983144,T cells - SCC 10x SCC002,	                1
+GSM4983145,T cells - SCC 10x SCC015,	                1
+GSM4983146,T cells - SCC 10x SCC020,	                1
+GSM4983147,T cells - SCC 10x SCC027,	                1
+GSM4983148,T cells - Blood (Tumor) 10x SCC002,	        1
+GSM4983149,T cells - Blood (Tumor) 10x SCC015,	        1
+GSM4983150,T cells - Blood (Tumor) 10x SCC020,	        1
+GSM4983151,T cells - Blood (Tumor) 10x SCC027,	        1
+GSM4983152,Myeloid Cells - SCC 10x SCC002,	            3
+GSM4983153,Myeloid Cells - SCC 10x SCC015,	            3
+GSM4983154,Myeloid Cells - SCC 10x SCC020,	            3
+GSM4983155,Myeloid Cells - SCC 10x SCC027,	            3
+GSM4983156,Myeloid Cells - Blood (Tumor) 10x SCC002,	3
+GSM4983157,Myeloid Cells - Blood (Tumor) 10x SCC015,	3
+GSM4983158,Myeloid Cells - Blood (Tumor) 10x SCC020,	3
+GSM4983159,Myeloid Cells - Blood (Tumor) 10x SCC027,	3
