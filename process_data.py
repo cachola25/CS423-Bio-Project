@@ -51,13 +51,13 @@ if __name__ == "__main__":
                     count_dictionary[curr] += int(line[1])
                     
         # Create a new file to store the gene names and their counts
-        output_file = "/".join(matrix.split('/')[:3]) + "/" + matrix.split('/')[2] + "_gene_count.txt"
+        output_file = "/".join(matrix.split('/')[:3]) + "/" + matrix.split('/')[2] + "_gene_count.csv"
         
         # Write the gene names and their counts to the file
         with open(output_file, 'w') as f:
-            f.write("Gene Name Count\n")
+            f.write("Gene Name,Count\n")
             for element in count_dictionary:
-                f.write(f"{element} {count_dictionary[element]}\n")
+                f.write(f"{element},{count_dictionary[element]}\n")
         print(F"Finished processing {matrix}")
                 
     
