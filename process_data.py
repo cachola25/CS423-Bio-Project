@@ -1,5 +1,4 @@
 import os
-
 if __name__ == "__main__":
     # Get a valid priority number from the user
     priority = int(input("Enter the priority number: "))

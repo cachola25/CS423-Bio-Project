@@ -1,6 +1,5 @@
 library(shiny)
 library(pheatmap)
-
 # Define UI
 ui <- fluidPage(
   titlePanel("Heatmap Generator"),
