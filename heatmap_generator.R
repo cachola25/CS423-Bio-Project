@@ -1,3 +1,33 @@
+library(shiny)
+library(heatmaply)
+
+# Define UI
+ui <- fluidPage(
+  titlePanel("Heatmap Generator"),
+  sidebarLayout(
+    sidebarPanel(
+      fileInput("file1", "Choose CSV File",
+                accept = c(
+                  "text/csv",
+                  "text/comma-separated-values,text/plain",
+                  ".csv")
+      ),
+      tags$hr(),
+      checkboxInput("header", "Header", TRUE),
+      actionButton('getHmap', 'Generate Heatmap')
+    ),
+    mainPanel(
+      tabsetPanel(
+        tabPanel("Heatmap",
+                 plotlyOutput("themap")),
+        tabPanel("Heatmap Table",
+                 tableOutput("table.output"))
+      )
+    )
+  )
+)
+
+# Server logic
 server <- function(input, output, session) {
   data <- reactiveVal(NULL) # Stores the CSV data
   
@@ -9,21 +39,20 @@ server <- function(input, output, session) {
     }
   })
   
+  # Renders CSV as table
+  output$table.output <- renderTable({
+    data()
+  })
+  
   # Process data for heatmap
   plotdata <- eventReactive(input$getHmap, {
     if (!is.null(data())) {
-      # Reshape data to wide format for heatmap
-      data_wide <- reshape2::dcast(data(), Celltype ~ `Gene 1`, value.var = "Cell")
-      
-      # Extract cell type as row names
-      row.names(data_wide) <- data_wide$Celltype
-      data_wide$Celltype <- NULL
-      
-      # Replace NAs with 0
-      data_wide[is.na(data_wide)] <- 0 
-      
-      # Create heatmap
-      heatmaply(data_wide, xlab = "Genes", ylab = "Cell Types", main = "Heatmap of Cell Counts")
+      # Select all gene columns dynamically
+      genes <- grep("^Gene\\.\\d+", names(data()), value = TRUE)
+      heatmap_data <- cbind(data()[genes], data()[["Cell"]])
+      colnames(heatmap_data) <- c(genes, "Cell")
+      heatmap_data[is.na(heatmap_data)] <- 0 
+      heatmaply(heatmap_data)
     }
   })
   
@@ -32,3 +61,6 @@ server <- function(input, output, session) {
     plotdata()
   })
 }
+
+# Run the application
+shinyApp(ui = ui, server = server)
