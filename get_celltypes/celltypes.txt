@@ -1,29 +1,10 @@
-Naive CD8 T cells
-Naive CD4 T cells
-Th2 cells
-Th1/Th17 cells
-T regulatory cells
-Th17 cells
-Effector memory CD8 T cells
-Vd2 gd T cells
-Th1 cells
-Terminal effector CD4 T cells
-Follicular helper T cells
-Non-Vd2 gd T cells
-Central memory CD8 T cells
-Terminal effector CD8 T cells
-MAIT cells
-Progenitor cells
-Natural killer cells
-Classical monocytes
-Myeloid dendritic cells
-Intermediate monocytes
-Plasmacytoid dendritic cells
-Plasmablasts
-Non classical monocytes
-Naive B cells
-Low-density basophils
-Non-switched memory B cells
-Switched memory B cells
-Exhausted B cells
-Low-density neutrophils
+CD8+ T cells
+CD4+ T cells
+T cells
+NK cells
+Progenitors
+Dendritic cells
+Monocytes
+B cells
+Basophils
+Neutrophils

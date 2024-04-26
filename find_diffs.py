@@ -2,7 +2,6 @@ import os
 import pandas as pd
 
 # Index positions for the bio_files.csv file
-# Comment
 GSMID_INDEX = 0
 FILENAME_INDEX = 1
 PRIORITY_INDEX = 2

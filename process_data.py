@@ -1,4 +1,5 @@
 import os
+
 if __name__ == "__main__":
     # Get a valid priority number from the user
     priority = int(input("Enter the priority number: "))
@@ -40,26 +41,24 @@ if __name__ == "__main__":
                 
                 # Split the line and get only the gene name and UMI count
                 line = line.strip().split()
-                curr_gene = gene_indexes[int(line[0])]
-                curr_barcode = line[1]
+                del line[1]
+                curr = gene_indexes[int(line[0])]
                 
                 # Sum the UMI counts for each gene
-                if (curr_gene,curr_barcode) not in count_dictionary:
-                    count_dictionary[(curr_gene,curr_barcode)] = int(line[2])
+                if curr not in count_dictionary:
+                    count_dictionary[curr] = int(line[1])
                 else:
-                    count_dictionary[(curr_gene,curr_barcode)] += int(line[2])
-                
+                    count_dictionary[curr] += int(line[1])
                     
         # Create a new file to store the gene names and their counts
         output_file = "/".join(matrix.split('/')[:3]) + "/" + matrix.split('/')[2] + "_gene_count.csv"
-
+        
         # Write the gene names and their counts to the file
         with open(output_file, 'w') as f:
-            f.write("Gene Name,Barcode,Count\n")
+            f.write("Gene Name,Count\n")
             for element in count_dictionary:
-                f.write(f"{element[0]},{element[1]},{count_dictionary[element]}\n")
+                f.write(f"{element},{count_dictionary[element]}\n")
         print(F"Finished processing {matrix}")
-        
                 
     
         

@@ -1,5 +1,7 @@
 library(shiny)
 library(pheatmap)
+library(dplyr)
+
 # Define UI
 ui <- fluidPage(
   titlePanel("Heatmap Generator"),
@@ -18,11 +20,6 @@ ui <- fluidPage(
                  checkboxInput("header", "Header", TRUE),
                  actionButton('getHmap', 'Generate Heatmap')
         ),
-        tabPanel("Customize Heatmap",
-                 selectInput("variable1", "Select Variable 1", choices = NULL),
-                 selectInput("variable2", "Select Variable 2", choices = NULL),
-                 actionButton("update_heatmap", "Update Heatmap")
-        )
       )
     ),
     mainPanel(
@@ -56,10 +53,15 @@ server <- function(input, output, session) {
   # Process data for heatmap
   plotdata <- eventReactive(input$getHmap, {
     if (!is.null(data())) {
-      a <- as.matrix(data()[-1])
-      row.names(a) <- data()$Name 
-      a[is.na(a)] <- 0 
-      a
+      clustered_data <- data() %>%
+        group_by(Celltype) %>%
+        summarise(across(-Barcode, sum)) %>%
+        ungroup()
+      
+      rownames(clustered_data) <- clustered_data$Celltype
+      clustered_data <- clustered_data[, -1]
+      clustered_data[is.na(clustered_data)] <- 0
+      clustered_data
     }
   })
   
@@ -70,20 +72,7 @@ server <- function(input, output, session) {
     }
   })
   
-  # Update selectInput choices when data is available
-  observe({
-    if (!is.null(data())) {
-      updateSelectInput(session, "variable1", choices = colnames(data()))
-      updateSelectInput(session, "variable2", choices = colnames(data()))
-    }
-  })
   
-  # Generate heatmap based on selected variables
-  observeEvent(input$update_heatmap, {
-    if (!is.null(data())) {
-      plotdata(matrix(data()[, c(input$variable1, input$variable2)]))
-    }
-  })
 }
 
 # Run the application
