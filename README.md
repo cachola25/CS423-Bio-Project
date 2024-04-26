@@ -2,7 +2,8 @@
     1.  Navigate to https://zenodo.org/records/6556290#.YoOCXGBBwrk and download the RDS file inside the CS423_Bio Project/R directory
     2.  Then, in the CS423_Bio Project/R directory, run the celltype.R script and wait for it to complete. You should end up with a metadata.csv file.
     3.  Then, navigate to the Python directory and run 'python add_gsm.py' to assign each cell to a GSMID
-    4.  The information is now properly preprocessed
+    4.  You will also need to go into the metadata.csv file and look for the top left column label. It will either be shown as "" or Unamed, change this to cell_name
+    5.  The information is now properly preprocessed
 
 
 ## To get the CSV data files:
