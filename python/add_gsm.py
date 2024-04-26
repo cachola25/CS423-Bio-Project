@@ -1,6 +1,5 @@
 
 import pandas as pd
-from rich.progress import track
 
 # Map the sample names to the GSM ID and add it to the metadata file
 if __name__ == '__main__':
