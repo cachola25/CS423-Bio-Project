@@ -1,8 +1,9 @@
 import os
-from time import sleep
 import pandas as pd
 from rich.progress import track
 
+# This script will get the barcode counts for each individual sample
+# and write them to a csv file
 if __name__ == "__main__":
     
     # Get the data from the RDS file
@@ -11,6 +12,7 @@ if __name__ == "__main__":
     while (priority < 1 or priority > 4):
         priority = int(input("Enter the priority number: "))
     directory = "data_files/priority_" + str(priority)
+    
     # Get the barcode files and gene count files for all of the samples
     barcode_files = []
     gene_count_files = []
@@ -27,7 +29,6 @@ if __name__ == "__main__":
     # The barcode files for each sample is different so
     # use a dictionary with the GSM ID and the line number
     # as the keys to store the barcodes
-    
     barcode_dict = dict()
     counts_dict = dict()
     for barcode in barcode_files:

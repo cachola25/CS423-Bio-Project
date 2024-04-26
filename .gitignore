@@ -5,6 +5,5 @@ get_celltypes/metadata.csv
 .Rhistory
 .RData
 .DS_Store
-metadata.csv
 csv_files.zip
 overall_barcode_counts.csv

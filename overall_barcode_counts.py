@@ -1,8 +1,9 @@
 import os
-from time import sleep
 import pandas as pd
 from rich.progress import track
 
+# This script gets the barcode counts for all of the samples
+# and writes them to a csv file
 if __name__ == "__main__":
     
     # Get the data from the RDS file
