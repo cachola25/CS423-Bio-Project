@@ -12,7 +12,11 @@
   ### Instructions:
     1.	You must first run 'python download.py' to get the necessary files
     2.	You must then run 'python process_data.py' to create the initial gene count files
+            a. You will be prompted to input which priority directory you would like to process [1 - 4]. To proceed with a 
+               processing a priority directory, you must run this script on that priority first
     3.	Then run 'python get_GOI_info.py' to filter the gene count files for the specific genes we're looking for
+            a. You will once again be prompted to enter a priority directory and you must run this to proceed with getting the final gene
+               counts for that directory.
     4.	You can then run 'python [overall,sample]_barcode_counts.py' to get the final gene counts for each cell
   ### Troubleshooting:
     Missing Packages: If you encounter any errors related to missing packages during the installation or runtime process, follow the instructions to install the missing packages.
