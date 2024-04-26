@@ -1,6 +1,6 @@
 data_files/
-get_celltypes/CD3_and_HLADR_integrated_clean_HARMONY_NEW.RDS
-get_celltypes/metadata.csv
+R/CD3_and_HLADR_integrated_clean_HARMONY_NEW.RDS
+R/metadata.csv
 .Rproj.user
 .Rhistory
 .RData

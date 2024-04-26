@@ -61,7 +61,7 @@ if __name__ == "__main__":
                     
                     # Navigate to the right priority folder and create a new directory for the files
                     priority = bio_files.loc[bio_files["link"] == lookup[0], "priority"].values[0]
-                    directory += "/data_files/priority_" + str(priority) + "/" + filename[:filename.find("_")]
+                    directory += "../data_files/priority_" + str(priority) + "/" + filename[:filename.find("_")]
                     
                     # Make directory if it doesn't exist
                     if not os.path.exists(directory):

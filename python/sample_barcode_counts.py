@@ -7,11 +7,11 @@ from rich.progress import track
 if __name__ == "__main__":
     
     # Get the data from the RDS file
-    metadata = pd.read_csv("./get_celltypes/metadata.csv")
+    metadata = pd.read_csv("../R/metadata.csv")
     priority = int(input("Enter the priority number: "))
     while (priority < 1 or priority > 4):
         priority = int(input("Enter the priority number: "))
-    directory = "data_files/priority_" + str(priority)
+    directory = "../data_files/priority_" + str(priority)
     
     # Get the barcode files and gene count files for all of the samples
     barcode_files = []
@@ -53,7 +53,7 @@ if __name__ == "__main__":
             
             # Print top of the csv
             header = "Celltype,Barcode"
-            genes = open("genes_of_interest.txt", 'r').read().strip().split('\n')
+            genes = open("../genes_of_interest.txt", 'r').read().strip().split('\n')
             for gene in genes:
                 header += "," + gene
             f.write(header + "\n")

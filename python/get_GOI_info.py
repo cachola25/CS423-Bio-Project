@@ -1,14 +1,16 @@
 import os
 import pandas as pd
 
+# Create a csv file that only contains the genes
+# we want to look at
 if __name__ == "__main__":
-    cells = open("./genes_of_interest.txt").read().splitlines()
+    cells = open("../genes_of_interest.txt").read().splitlines()
     
     # Get the priority number from the user
     priority = int(input("Enter the priority number: "))
     while priority < 1 or priority > 4:
         priority = int(input("Enter the priority number: "))
-    directory = "data_files/priority_" + str(priority)
+    directory = "../data_files/priority_" + str(priority)
     
     gene_count_files = []
     for root, dirs, files in os.walk(directory):

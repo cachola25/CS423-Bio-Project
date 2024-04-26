@@ -7,13 +7,13 @@ from rich.progress import track
 if __name__ == "__main__":
     
     # Get the data from the RDS file
-    metadata = pd.read_csv("./get_celltypes/metadata.csv")
+    metadata = pd.read_csv("../R/metadata.csv")
         
     # Get the barcode files and gene count files for all of the samples
     barcode_files = []
     gene_count_files = []
     for i in range(1,5):
-        directory = "data_files/priority_" + str(i)
+        directory = "../data_files/priority_" + str(i)
         for root, dirs, files in os.walk(directory):
             for file in files:
                 if file.endswith("_barcodes.tsv"):
@@ -46,13 +46,13 @@ if __name__ == "__main__":
                 counts_dict[(gsm,barcode_str)] = (row['Count'], row['Gene Name'])
     
     # Use GSMID and barcode from gene name to get the the gene count for that cell
-    output_file = "./overall_barcode_counts.csv"
+    output_file = "../overall_barcode_counts.csv"
     output_lines = []
     with open(output_file, 'w') as f:
         
         # Print top of the csv
         header = "Celltype,Barcode"
-        genes = open("genes_of_interest.txt", 'r').read().strip().split('\n')
+        genes = open("../genes_of_interest.txt", 'r').read().strip().split('\n')
         for gene in genes:
             header += "," + gene
         f.write(header + "\n")

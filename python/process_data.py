@@ -5,7 +5,7 @@ if __name__ == "__main__":
     priority = int(input("Enter the priority number: "))
     while (priority < 1 or priority > 4):
         priority = int(input("Enter the priority number: "))
-    directory = "data_files/priority_" + str(priority)
+    directory = "../data_files/priority_" + str(priority)
     
     # Get the necessary matrix and gene files
     matrix_files = []
