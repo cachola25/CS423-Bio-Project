@@ -21,7 +21,7 @@ if __name__ == "__main__":
     for count in gene_count_files:
         curr_file = pd.read_csv(count)
         curr_file = curr_file[curr_file["Gene Name"].isin(cells)]
-        output_file = directory + '/' + count.split("/")[2] + "/" + count.split("/")[-1].split("_")[0] + "_GOI.csv"
+        output_file = directory + '/' + count.split("/")[3] + "/" + count.split("/")[-1].split("_")[0] + "_GOI.csv"
         with open(output_file, "w") as f:
             f.write("Gene Name,Barcode,Count\n")
             for index, element in curr_file.iterrows():

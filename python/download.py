@@ -13,7 +13,7 @@ import subprocess # to run shell commands
 
 if __name__ == "__main__":
     # Read in spreadsheet to get the GSM links and create the website URL for each link
-    bio_files = pd.read_csv("bio_files.csv")
+    bio_files = pd.read_csv("../bio_files.csv")
     links = []
     for link in bio_files["link"]:
         links.append("https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=" + link)
@@ -54,13 +54,14 @@ if __name__ == "__main__":
                     filename = url_query[url_query.find("&file=")+6:]
                     
                     # Get the current working directory and create a new directory for the files
-                    directory = subprocess.run(["pwd"],capture_output=True, text=True).stdout.strip()
+                    directory = os.getcwd()
                     
                     # Isolate only the GSM number from the filename
                     lookup = [filename[:filename.find("_")]]
                     
                     # Navigate to the right priority folder and create a new directory for the files
                     priority = bio_files.loc[bio_files["link"] == lookup[0], "priority"].values[0]
+                    directory = directory[:directory.find("/python")]
                     directory += "../data_files/priority_" + str(priority) + "/" + filename[:filename.find("_")]
                     
                     # Make directory if it doesn't exist

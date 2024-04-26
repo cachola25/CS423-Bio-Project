@@ -41,23 +41,22 @@ if __name__ == "__main__":
                 
                 # Split the line and get only the gene name and UMI count
                 line = line.strip().split()
-                del line[1]
-                curr = gene_indexes[int(line[0])]
+                curr = (gene_indexes[int(line[0])],line[1])
                 
                 # Sum the UMI counts for each gene
                 if curr not in count_dictionary:
-                    count_dictionary[curr] = int(line[1])
+                    count_dictionary[curr] = int(line[2])
                 else:
-                    count_dictionary[curr] += int(line[1])
+                    count_dictionary[curr] += int(line[2])
                     
         # Create a new file to store the gene names and their counts
-        output_file = "/".join(matrix.split('/')[:3]) + "/" + matrix.split('/')[2] + "_gene_count.csv"
+        output_file = "/".join(matrix.split('/')[:3]) + "/" +  matrix.split('/')[3] + '/' +  matrix.split('/')[3] + "_gene_count.csv"
         
         # Write the gene names and their counts to the file
         with open(output_file, 'w') as f:
-            f.write("Gene Name,Count\n")
+            f.write("Gene Name,Barcode,Count\n")
             for element in count_dictionary:
-                f.write(f"{element},{count_dictionary[element]}\n")
+                f.write(f"{element[0]},{element[1]},{count_dictionary[element]}\n")
         print(F"Finished processing {matrix}")
                 
     
