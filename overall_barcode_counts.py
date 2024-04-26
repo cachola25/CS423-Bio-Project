@@ -40,12 +40,12 @@ if __name__ == "__main__":
                 index += 1
                 
             curr_csv = pd.read_csv(gene_count_files[barcode_files.index(barcode)])
-            for i, row in curr_csv.iterrows():
+            for i, row in track(curr_csv.iterrows(),description="Processing gene count files...",total=curr_csv.shape[0]):
                 barcode_str = barcode_dict[(gsm,row['Barcode'])]
                 counts_dict[(gsm,barcode_str)] = (row['Count'], row['Gene Name'])
     
     # Use GSMID and barcode from gene name to get the the gene count for that cell
-    output_file = "./barcode_counts.csv"
+    output_file = "./overall_barcode_counts.csv"
     output_lines = []
     with open(output_file, 'w') as f:
         
@@ -68,7 +68,7 @@ if __name__ == "__main__":
                 line = row["labels.fine"] + "," + curr_code
                 # Get the counts for each gene, if the gene is not in the dictionary, set the count to 0
                 for gene in genes:
-                    if gene in counts_dict[(row["GSMID"], curr_code)][1]:
+                    if gene == counts_dict[(row["GSMID"], curr_code)][1]:
                         line += "," + str(counts_dict[(row["GSMID"], curr_code)][0])
                     else:
                         line += ",0"

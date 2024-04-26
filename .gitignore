@@ -5,3 +5,5 @@ get_celltypes/CD3_and_HLADR_integrated_clean_HARMONY_NEW.RDS
 .RData
 .DS_Store
 metadata.csv
+csv_files.zip
+overall_barcode_counts.csv
